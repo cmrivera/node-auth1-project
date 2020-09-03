@@ -2,8 +2,8 @@ const express = require("express");
 const session = require("express-session");
 
 const usersRouter = require("./users/users-router");
-const authRouter = require("./auth/router");
-const restricted = require("./auth/restricted-middleware");
+const authRouter = require("./authentication/router");
+const restricted = require("./authentication/restricted-middleware");
 
 const server = express();
 
