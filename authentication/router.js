@@ -5,6 +5,8 @@ const router = require("express").Router();
 const Users = require("../users/users-model");
 
 //post to register user. guided project auth 1 for reference
+//*** 1 Client sends credentials */
+/*** 7-9 client stores and sends cookie on every request */
 router.post("/register", (req, res) => {
   const userInfo = req.body;
 
@@ -22,12 +24,15 @@ router.post("/register", (req, res) => {
 });
 
 //post for user login input
+/**** 1  Client sends credentials */
+/** 7-9 client stores and sends cookie on every request */
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   Users.findby({ username })
     .then(([user]) => {
       console.log(user);
+      /** 4 - 6  produces  stores and sends cookie when verified by server */
       if (user && bcrypt.compareSync(password, user.password)) {
         req.session.user = {
           id: user.id,
